@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neo4j
+  namespace: neo4j
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neo4j
+  template:
+    metadata:
+      labels:
+        app: neo4j
+    spec:
+      containers:
+        - name: neo4j
+          image: 'aguinaldoabbj/neo4j-community'
+          env:
+            - name: NEO4J_AUTH
+              value: none
+          volumeMounts:
+            - name: neo4j-pv
+              mountPath: /data
+      volumes:
+      - name: neo4j-pv
+        persistentVolumeClaim:
+         claimName: neo4j-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: neo4j-pvc
+  namespace: neo4j
+  labels:
+    app: neo4j
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: neo4j-service
+  namespace: neo4j
+  labels:
+    name: neo4j-service
+spec:
+  ports:
+    - port: 7474
+      targetPort: 7474
+      protocol: TCP
+      name: http
+    - port: 7687
+      targetPort: 7687
+      protocol: TCP
+      name: bolt
+  selector:
+    app: neo4j-community
+  type: ClusterIP

@@ -1,0 +1,19 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJXRENCL3FBREFnRUNBZ0VBTUFvR0NDcUdTTTQ5QkFNQ01DTXhJVEFmQmdOVkJBTU1HR3N6Y3kxelpYSjIKWlhJdFkyRkFNVFU0TlRNeE5qSTJNakFlRncweU1EQXpNamN4TXpNM05ESmFGdzB6TURBek1qVXhNek0zTkRKYQpNQ014SVRBZkJnTlZCQU1NR0dzemN5MXpaWEoyWlhJdFkyRkFNVFU0TlRNeE5qSTJNakJaTUJNR0J5cUdTTTQ5CkFnRUdDQ3FHU000OUF3RUhBMElBQkRhaFcyckRvWXZIVllvVG1uWnNwTkpqejZjcFlGeFZBVGhtaGE5MWpENFIKRkRFZnN4Wko1aDJueEpiTXpzQ1MvL0QyYS9Hb0VuZnZNL0orU2tZbG1JMmpJekFoTUE0R0ExVWREd0VCL3dRRQpBd0lDcERBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUFvR0NDcUdTTTQ5QkFNQ0Ewa0FNRVlDSVFDNk13Qm1oZ3BMCmlGcG5FZHZ0NlBqZTE3MWx0Qy9PeGZ2eDZuVG1WbTRCc1FJaEFOZWdLaGthNHA3bG15T25IUHdreFovQVppM04KcGQ3NEt3bVovT1pEa3FwKwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCh==
+    server: https://192.168.1.1:6443
+  name: default
+contexts:
+- context:
+    cluster: default
+    user: default
+  name: default
+current-context: default
+kind: Config
+preferences: {}
+users:
+- name: default
+  user:
+    password: 7981ff206b80bd8fd4036e2515ef324e
+    username: admin
